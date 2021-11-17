@@ -5,9 +5,6 @@ const config = {
     Accept: "application/json" } 
   }
 
- 
-
-  
 const jokeContent = document.getElementById('joke-content')
 const laughBtn = document.getElementById('emoji-laugh')
 const rollEyesBtn = document.getElementById('emoji-rollEyes')
@@ -21,6 +18,7 @@ function getJoke(){
   fetch(url, config)
   .then(data => data.json())
   .then(dataObj => renderJoke(dataObj))
+  jokeHeader.textContent = "My Dad Said...";
 }
 
 function renderJoke(jokes){
@@ -38,11 +36,29 @@ function addRollEyes(rollEyesNum){
 }
 
 //evenlistener
+document.addEventListener('DOMContentLoaded',getJoke)
+
 random.addEventListener('click',getJoke);
 
 laughBtn.addEventListener('click', () => addlaugh(laughNum)); 
 
 rollEyesBtn.addEventListener('click', () => addRollEyes(rollEyesNum));
+
+
+const jokeHeader  =  document.querySelector('#joke-header')
+const addJoke = document.querySelector('#form-comment')
+addJoke.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const newJoke = document.querySelector('#comment').value;
+  jokeHeader.textContent = "What's Your?";
+  jokeContent.textContent = newJoke;
+  laughBtn.remove();
+  rollEyesBtn.remove();
+  laughNum.remove();
+  rollEyesNum.remove();
+  event.target.reset();
+  console.log(newJoke)
+})
 
 
 
