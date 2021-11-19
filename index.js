@@ -63,7 +63,7 @@ function randomRate(min, max) {
 function jokeRate(event){
   //event.preventDefault();
   const newJoke = document.querySelector('#comment').value;
-  jokeHeader.textContent = "Are You Funny?";
+  // jokeHeader.textContent = "Are You Funny?";
   jokeContent.textContent = newJoke;
   laughBtn.innerHTML = '';
   rollEyesBtn.innerHTML = '';
@@ -76,7 +76,7 @@ function jokeRate(event){
   const jokeScore = randomRate(1, 10)
   console.log(jokeScore)
   
-  if (jokeScore < 3) {
+  if (jokeScore <= 3) {
   const sent1 = `Don't Quit Your Dayjob... ${jokeScore} out of 10`
   jokeHeader.textContent = sent1.toUpperCase()
   //const notFunny = document.createElement("img")
@@ -84,15 +84,15 @@ function jokeRate(event){
   //document.body.appendChild(notFunny)
   header.appendChild(notFunny)
   }
-  else if (jokeScore < 5) {
+  else if (jokeScore <= 5 && jokeScore > 3) {
     const sent2 = `I've Heard Better... ${jokeScore} out of 10`
     jokeHeader.textContent = sent2.toUpperCase()
     //const notFunny = document.createElement("img")
-    notFunny.src = "https://cdn.shopify.com/s/files/1/1061/1924/products/Face_With_Rolling_Eyes_Emoji_large.png?v=1571606035"
+    notFunny.src = "https://cdn.shopify.com/s/files/1/1061/1924/products/Expressionless_Emoji_Icon_45516a90-b907-4345-888a-37597cd6e42e_large.png?v=1571606089"
     //document.body.appendChild(notFunny)
     header.appendChild(notFunny)
   }
-  else if (jokeScore > 5 && jokeScore < 8) {
+  else if (jokeScore > 5 && jokeScore <= 8) {
     const sent3 = `Ok That Was Kinda Funny... ${jokeScore} out of 10`
     jokeHeader.textContent = sent3.toUpperCase()
     //const youreFunny = document.createElement("img")
@@ -100,11 +100,11 @@ function jokeRate(event){
   //document.body.appendChild(youreFunny)
   header.appendChild(youreFunny)
   }
-  else if (jokeScore >= 8) {
+  else if (jokeScore >= 9) {
     const sent4 = `I AM DECEASED. ${jokeScore} out of 10`
     jokeHeader.textContent = sent4.toUpperCase()
     //const youreFunny = document.createElement("img")
-   youreFunny.src ="https://cdn.shopify.com/s/files/1/1061/1924/products/Tears_of_Joy_Emoji_8afc0e22-e3d4-4b07-be7f-77296331c687_large.png?v=1571606036"
+   youreFunny.src ="https://cdn.shopify.com/s/files/1/1061/1924/products/Skull_Emoji_Icon_8cee31f2-35dd-42e7-b757-3cb8cfe72437_large.png?v=1571606093"
   //document.body.appendChild(youreFunny)
   header.appendChild(youreFunny)
   }

@@ -16,19 +16,20 @@
 body {
   padding: 20px;
   text-align: center;
-  background-color:#ff8989;
+  background-color:#52538E;
 }
 #container {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-color:#52538E;
+    margin-top: 100px;
 }
 #joke-area {
   padding: 10px;
-  border: 4px solid #F8F10E;
+  border: 4px solid #34355B;
   border-radius: 20px;
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 #joke-content {
   padding: 30px;
@@ -36,35 +37,35 @@ body {
   height: 150px;
   font-size: 1.5em;
   text-align: center;
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 #emoji{
   padding: 10px; 
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 #emoji-laugh{
   font-size: 1.5em;
   border: none;
-  background-color: #B4009D; 
+  background-color: #77B6EA; 
   cursor: pointer;
 }
 #laugh-count{
   font-size: 1.5em;
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 #emoji-rollEyes{
   font-size: 1.5em;
   border: none;
-  background-color: #B4009D; 
+  background-color: #77B6EA; 
   cursor:pointer;
 }
 #rollEyes-count{
   font-size: 1.5em;
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 #random{
   padding: 10px;
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 #random-btn{
   font-size: 1em;
@@ -78,13 +79,13 @@ body {
   /* background-image: url(https://cliply.co/wp-content/uploads/2020/01/401911130_THINKING_FACE_BG_400.gif); */
   background-repeat:no-repeat;
   background-position:center;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 #comment{
   margin-left: auto;
   margin-right: auto;
   display: inline-block;
-  width: 400px;
+  width: 460px;
   height: 25px;
   border: 2px solid gray;
   padding: 10px;
@@ -96,13 +97,13 @@ body {
   font-size: 1em;
   font-weight: bold;
   padding: 5px 25px 5px 25px;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
   cursor: pointer;
 }
 img{
-  width: 50px;
-  height: 50px;
-  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+  margin-top: 100px;
 }
 
 #exit{
@@ -115,22 +116,25 @@ img{
   margin-top: 10px;
   width: 100px;
   height: 40px;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 #comment-title{
   color:rgb(0, 0, 0);
   padding-bottom: 10px;
-  text-shadow: #000000;
+  text-shadow: white 0px 0px 10px;
+  font-size: 2em;
 }
 
 #welcome-header{
-  color: white;
+  color: rgb(0, 0, 0);
+  margin-top: 100px;
 }
 
 #troll{
   height: max-content;
   width: 398px;
-  padding-top: 20px;
 }
 
 /* #reply-btn{
@@ -166,7 +170,7 @@ img{
   padding: 10px;
   border: 4px solid #F8F10E;
   border-radius: 20px;
-  background-color: #B4009D;
+  background-color: #77B6EA;
 }
 .comment-card {
   padding: 10px;
@@ -179,7 +183,8 @@ img{
 
 .comment-card {
   border: solid;
-  border-color: #ffcb05;
+  border-color: #383961;
+  border-radius: 10px;
   padding: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -188,10 +193,11 @@ img{
   text-align: center;
   width: auto;
   height: auto;
+  background-color: #77B6EA;
 }
 
 .comment-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(218, 31, 31, 0.685);
+  box-shadow: 0 8px 16px 0 #77B6EA
 }
 
 #comments-container {
@@ -207,4 +213,30 @@ img{
   padding: 10px;
   font-size: 14px;
   margin-bottom: 10px; 
+}
+
+#joke-header {
+  margin-top: 50px;
+}
+
+#troll-container{
+  margin-top: -70px;
+}
+
+input{
+  min-height:50px;
+  border-radius: 5px;
+}
+
+#comment-btn, #exit, #random-btn{
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+#logo {
+  width:20%;
+  height: 20%;
+  margin-top: -40px;
+  margin-bottom: -100px;
+  padding: 20px 0px 0px 0px;
 }
