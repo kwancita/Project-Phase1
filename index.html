@@ -6,17 +6,20 @@
 </head>
 <body>
     <div id = 'intro'>
-        <h1>Wanna hear my dad's Joke?</h1> 
-        <button id = goTo>WHY NOT</button>
+        <h1 id = 'welcome-header'>Wanna Hear a Dad Joke?</h1> 
+        <div>
+        <img id ="troll" src="https://www.gifcen.com/wp-content/uploads/2021/07/troll-face-gif-3.gif"  alt = "hehehe">
+        </div>
+        <button id = goTo>Wine Not</button>
     </div>
     <div id = 'inner-page' style="display: none;">
         <div id = "title-logo"> 
-            <h1>Header goes here</h1>
+            <h1></h1>
         </div>
         <div id = "container">
             <div id ="joke-area">
                 <div id = "header">
-                    <h2 id ="joke-header">My Dad Said...</h2>
+                    <h2 id ="joke-header">My Dad Once Told Me...</h2>
                     <!-- <img src="" alt=""> -->
                 </div>
                 <p id ="joke-content"></p>
@@ -27,27 +30,24 @@
                     <span id="rollEyes-count">0 </span> 
                 </div>
                 <div id ="random">
-                    <button id = "random-btn">Random</button>
+                    <button id = "random-btn">New Joke!</button>
                 </div>
             </div>
-        </div>
+        </div> 
+        <!-- <div id ="comment-form"></div> -->
+         <div id ="comments-container">
+         </div>
         <div id ="form">
             <form id="form-comment">
-                <h3>Tell me you dad's Joke</h3>
-                <textarea id="comment"></textarea>
-                <button id ="comment-btn" type="submit">Post</button>
+                <h3 id= "comment-title">Do You Think You're Funny?</h3>
+                <input id="comment" placeholder="Tell Me a Joke...">  </input>
+                <input type="text" id="user" placeholder="Your Name">
+                <br>
+                <button id ="comment-btn" type="submit">Show Me What You Got</button>
             </form>
-        </div>
-        <div>
-            <button id="exit">Exit</button>
+            <button id="exit">Home</button>
         </div>
     </div>
-    
-    
-
-    
     <script src='index.js'></script>
 </body>
 </html>
-
-<!-- done -->

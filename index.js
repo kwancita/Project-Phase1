@@ -5,6 +5,7 @@ const config = {
     Accept: "application/json" } 
   }
 
+// DOM
 const jokeContent = document.getElementById('joke-content')
 const laughBtn = document.getElementById('emoji-laugh')
 const rollEyesBtn = document.getElementById('emoji-rollEyes')
@@ -16,6 +17,9 @@ const addJoke = document.querySelector('#form-comment')
 const header = document.querySelector('#header')
 const notFunny = document.createElement("img")
 const youreFunny = document.createElement("img")
+const emojiSet = document.querySelector("#emoji")
+const container = document.querySelector("#comments-container")
+const card = document.querySelector("#comment-card")
 
 
 //function
@@ -23,21 +27,17 @@ function getJoke(){
   fetch(url, config)
   .then(data => data.json())
   .then(dataObj => renderJoke(dataObj))
-  jokeHeader.textContent = "My Dad Said...";
-
- 
-
-}
-function removeEmoji(){
-  youreFunny.remove();
-  notFunny.remove();
+  resetForm();
 }
 
 function renderJoke(jokes){
   jokeContent.innerHTML = jokes.joke; 
-  laughNum.textContent = 0;
-  rollEyesNum.textContent = 0;
   removeEmoji();
+}
+
+function removeEmoji(){
+  youreFunny.remove();
+  notFunny.remove();
 }
 
 function addlaugh(laughNum){
@@ -48,10 +48,72 @@ function addRollEyes(rollEyesNum){
   rollEyesNum.textContent = 1+parseInt(rollEyesNum.textContent)
 }
 
+function resetForm(){
+  jokeHeader.textContent = "My Dad Once Told Me...";
+  laughBtn.textContent = "😂";
+  rollEyesBtn.textContent = "🙄";
+  laughNum.textContent = 0;
+  rollEyesNum.textContent = 0;
+}
+
+function randomRate(min, max) { 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function jokeRate(event){
+  //event.preventDefault();
+  const newJoke = document.querySelector('#comment').value;
+  jokeHeader.textContent = "Are You Funny?";
+  jokeContent.textContent = newJoke;
+  laughBtn.innerHTML = '';
+  rollEyesBtn.innerHTML = '';
+  laughNum.innerHTML = '';
+  rollEyesNum.innerHTML = '';
+  removeEmoji();
+  //event.target.reset();
+  console.log(newJoke)
+  
+  const jokeScore = randomRate(1, 10)
+  console.log(jokeScore)
+  
+  if (jokeScore < 3) {
+  const sent1 = `Don't Quit Your Dayjob... ${jokeScore} out of 10`
+  jokeHeader.textContent = sent1.toUpperCase()
+  //const notFunny = document.createElement("img")
+  notFunny.src = "https://cdn.shopify.com/s/files/1/1061/1924/products/Face_With_Rolling_Eyes_Emoji_large.png?v=1571606035"
+  //document.body.appendChild(notFunny)
+  header.appendChild(notFunny)
+  }
+  else if (jokeScore < 5) {
+    const sent2 = `I've Heard Better... ${jokeScore} out of 10`
+    jokeHeader.textContent = sent2.toUpperCase()
+    //const notFunny = document.createElement("img")
+    notFunny.src = "https://cdn.shopify.com/s/files/1/1061/1924/products/Face_With_Rolling_Eyes_Emoji_large.png?v=1571606035"
+    //document.body.appendChild(notFunny)
+    header.appendChild(notFunny)
+  }
+  else if (jokeScore > 5 && jokeScore < 8) {
+    const sent3 = `Ok That Was Kinda Funny... ${jokeScore} out of 10`
+    jokeHeader.textContent = sent3.toUpperCase()
+    //const youreFunny = document.createElement("img")
+   youreFunny.src ="https://cdn.shopify.com/s/files/1/1061/1924/products/Tears_of_Joy_Emoji_8afc0e22-e3d4-4b07-be7f-77296331c687_large.png?v=1571606036"
+  //document.body.appendChild(youreFunny)
+  header.appendChild(youreFunny)
+  }
+  else if (jokeScore >= 8) {
+    const sent4 = `I AM DECEASED. ${jokeScore} out of 10`
+    jokeHeader.textContent = sent4.toUpperCase()
+    //const youreFunny = document.createElement("img")
+   youreFunny.src ="https://cdn.shopify.com/s/files/1/1061/1924/products/Tears_of_Joy_Emoji_8afc0e22-e3d4-4b07-be7f-77296331c687_large.png?v=1571606036"
+  //document.body.appendChild(youreFunny)
+  header.appendChild(youreFunny)
+  }
+}
 
 
-//evenlistener
-//document.addEventListener('DOMContentLoaded',getJoke)
+
+//eventlistener
+document.addEventListener('DOMContentLoaded', getJoke)
 
 random.addEventListener('click',getJoke);
 
@@ -59,40 +121,11 @@ laughBtn.addEventListener('click', () => addlaugh(laughNum));
 
 rollEyesBtn.addEventListener('click', () => addRollEyes(rollEyesNum));
 
-addJoke.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const newJoke = document.querySelector('#comment').value;
-  jokeHeader.textContent = "Are You Funny?";
-  jokeContent.textContent = newJoke;
-  laughBtn.remove();
-  rollEyesBtn.remove();
-  laughNum.remove();
-  rollEyesNum.remove();
-  removeEmoji();
-  event.target.reset();
-  console.log(newJoke)
 
-  function jokeRating(min, max) { 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
-  const jokeScore = jokeRating(1, 10)
-  console.log(jokeScore)
-  
-  if (jokeScore < 5) {
-  jokeHeader.textContent = `Don't Quit Your Dayjob... ${jokeScore} out of 10`
-  //const notFunny = document.createElement("img")
-  notFunny.src = "https://cdn.shopify.com/s/files/1/1061/1924/products/Face_With_Rolling_Eyes_Emoji_large.png?v=1571606035"
-  //document.body.appendChild(notFunny)
-  header.appendChild(notFunny)
-  }
-  else if (jokeScore > 5) {
-    jokeHeader.textContent = `Ok That Was Kinda Funny... ${jokeScore} out of 10`
-    //const youreFunny = document.createElement("img")
-   youreFunny.src ="https://cdn.shopify.com/s/files/1/1061/1924/products/Tears_of_Joy_Emoji_8afc0e22-e3d4-4b07-be7f-77296331c687_large.png?v=1571606036"
-  //document.body.appendChild(youreFunny)
-  header.appendChild(youreFunny)
-  }
-})
+///////
+addJoke.addEventListener('submit', createNewJoke)
+////////
+
 
 let dadJoke = false;
 
@@ -116,30 +149,75 @@ document.addEventListener("DOMContentLoaded", () => {
   const intro = document.querySelector("#intro");
   const innerPage = document.querySelector("#inner-page");
   btnExit.addEventListener("click", () => {
-    dadJoke = dadJoke;
+    
     if (dadJoke) {
       intro.style.display = "block"
       innerPage.style.display = "none";
     } else {
       intro.style.display = "none";
     }
+    dadJoke = !dadJoke;
   })
 })
+///////////
 
 
-///done 
+function loadNewJoke() {
+  fetch("http://localhost:3000/yourJoke") // returns a promise
+  .then(resp => resp.json()) // another promise
+  .then(jokes => {
+    jokes.forEach(renderNewJoke);  
+    // console.log(comments);
+  });
+}
+
+function renderNewJoke(joke) {
+  const commentCard = document.createElement("div");
+  const userName = document.createElement("h3");
+  const userContent = document.createElement("p");
+  const userRate = document.createElement("p");
+  
+  commentCard.className = "comment-card";
+  
+  userName.textContent = joke.user;
+  
+  userContent.textContent = joke.content;
+
+  userRate.textContent = joke.rate;
+  
+  commentCard.append(userName, userContent, userRate);
+  container.append(commentCard);
+}
 
 
+function createNewJoke(e) {
+  e.preventDefault();
 
+  let userJoke = addJoke.querySelector("#comment").value;
+  let userName = document.querySelector("#user").value;
+  let rating = jokeRate();
+  let jokes = {
+    content: userJoke,
+    user: userName,
+    rate:rating
+  };
 
+  fetch("http://localhost:3000/yourJoke",{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify(jokes),
+  })
+  .then((res) => res.json())
+  .then(newJoke => {
+    console.log(newJoke)
+    addJoke.reset();
+    container.replaceChildren();
+    loadNewJoke();
+  });
+  
+}
 
-
-
-
-
-
-
-
-
- 
-
+loadNewJoke();
